@@ -26,8 +26,5 @@ jobs:
       run: mvn -B package --file pom.xml
       
     - name: Run Sonar Cube
-      run : mvn sonar:sonar \
-        | -Dsonar.projectKey=${{secrets.SONAR_PROJECT_KEY}} \
-        | -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} \
-        | -Dsonar.login=${{secrets.SONAR_LOGIN}} \
+      run : mvn sonar:sonar -Dsonar.projectKey=${{secrets.SONAR_PROJECT_KEY}} -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} -Dsonar.login=${{secrets.SONAR_LOGIN}} \
     
