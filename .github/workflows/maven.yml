@@ -27,4 +27,15 @@ jobs:
       
     - name: Run Sonar Cube
       run : mvn sonar:sonar -Dsonar.projectKey=${{secrets.SONAR_PROJECT_KEY}} -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} -Dsonar.login=${{secrets.SONAR_LOGIN}} \
-    
+
+    - name: Depoly
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_IP }}
+          username: ${{ secrets.SSH_ID }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "target/*.jar"
+          target: "~/"
+          rm: false
+          script: "~/startup.sh"
