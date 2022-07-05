@@ -33,7 +33,7 @@ jobs:
       with:
           host: ${{ secrets.SSH_IP }}
           username: ${{ secrets.SSH_ID }}
-          key: ${{ secrets.AUTHORIZED_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: "target/*.jar"
           target: "~/"
